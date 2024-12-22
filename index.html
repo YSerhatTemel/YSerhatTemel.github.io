@@ -9,8 +9,8 @@
             background-color: #ffe81f;
             text-align: center;
             height: 450px;
-            margin-left: 50px;
-            margin-right: 50px;
+            margin-left: 250px;
+            margin-right: 250px;
             font-family: fantasy;
             font-size: large;
             margin-top: 50px;
@@ -30,9 +30,10 @@
         #div2,
         #div3,
         #div4 {
-            margin-left: 50px;
-            margin-right: 50px;
-            margin: 50px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: 250px;
+            margin-right: 250px;
             background-color: #ffe81f;
             color: black;
             font-family: Blippo, fantasy;
@@ -50,7 +51,10 @@
             text-align: center;
             background-color: #ffe81f;
             padding: 20px;
-            margin: 50px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: 250px;
+            margin-right: 250px;
         }
 
         #messageForm {
@@ -83,11 +87,27 @@
 
 </head>
 
-<body background="bodyback.jpg">
+<body background="stars.jpg">
 
     <div id="div1">
         <h1 style="color:#43a5cf; padding-top:20px;">Anakin Skywalker</h1>
         <img src="HaydenChristensen.jpg" alt="Anakin" id="img1" width="200px" height="200px" style=" padding-top: 0px;">
+        <script>
+            document.getElementById("img1").addEventListener("click", function () {
+    const gorsel = this;
+
+    const ilkGorsel = "HaydenChristensen.jpg";
+    const ikinciGorsel = "images.jpg";
+
+
+    if (gorsel.src.includes(ilkGorsel)) {
+        gorsel.src = ikinciGorsel;
+    } else {
+        gorsel.src = ilkGorsel;
+    }
+});
+
+        </script>
         <br><br>
         <a id="as" href="Web.html">About Me</a>
         <a id="as" href="Web.html">Purporses</a>
@@ -155,10 +175,35 @@
 
     <script>
         $(document).ready(function () {
-            $('#showFormButton').click(function () {
-                $('#messageFormContainer').slideToggle();
+        $('#showFormButton').click(function () {
+            $('#messageFormContainer').slideToggle();
+        });
+
+        $('#messageForm').on('submit', function (e) {
+            e.preventDefault(); 
+
+            const formData = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                message: $('#message').val(),
+            };
+
+            
+            $.ajax({
+                url: '/send-message', 
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    alert('Mesaj başarıyla gönderildi!');
+                    $('#messageFormContainer').slideUp();
+                },
+                error: function (error) {
+                    alert('Mesaj gönderilirken bir hata oluştu.');
+                },
             });
         });
+    });
     </script>
 
 </body>
