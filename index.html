@@ -1,85 +1,167 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 
-    <head>
-        <meta charset="utf-8">
-        <title>Anakin Skywalker</title>
-        <style>
-    #div1
-    {
-        background-color: #ffe81f;
-        text-align: center;
-        height: 400px;
-        margin-left: 50px;
-        margin-right: 50px;
-        font-family:fantasy;
-        font-size: large;
-        margin-top: 50px;
-   
-    }
-    #img1
-    {
-        border-radius: 50%;
-        margin-top: 50px;
-    }
-    #as 
-    {
-        color: black;
-        margin: 0 15px;
-        text-decoration: none;
-    }
-    #div2
-    {
-        margin-left: 50px;
-        margin-right: 50px;
-        margin:50px;
-        background-color: #ffe81f;
-        color: black;
-        font-family: Blippo, fantasy;
-        padding: 20px;
-    }
-        </style>
+<head>
+    <meta charset="utf-8">
+    <title>Anakin Skywalker</title>
+    <style>
+        #div1 {
+            background-color: #ffe81f;
+            text-align: center;
+            height: 450px;
+            margin-left: 50px;
+            margin-right: 50px;
+            font-family: fantasy;
+            font-size: large;
+            margin-top: 50px;
+        }
 
-    </head>
+        #img1 {
+            border-radius: 50%;
+            margin-top: 50px;
+        }
 
-    <body background="bodyback.jpg">
+        #as {
+            color: black;
+            margin: 0 15px;
+            text-decoration: none;
+        }
 
-        <div id="div1">
-            <h1 style="color:#43a5cf; padding-top:20px;">Anakin Skywalker</h1>
-            <img src="HaydenChristensen.jpg" alt="Anakin" id="img1" width="200px" height="200px" style=" padding-top: 0px;" >
-            <br><br>
+        #div2,
+        #div3,
+        #div4 {
+            margin-left: 50px;
+            margin-right: 50px;
+            margin: 50px;
+            background-color: #ffe81f;
+            color: black;
+            font-family: Blippo, fantasy;
+            padding: 20px;
+        }
 
+        #icerik,
+        #icerik2,
+        #icerik3 {
+            display: none;
+        }
 
-            <a id="as" href="Web.html">About Me</a>
-            <a id="as" href="Web.html">Purporses</a>
-            <a id="as" href="Web.html">Communication</a>
-            
-        </div>
+        #messageFormContainer {
+            display: none;
+            text-align: center;
+            background-color: #ffe81f;
+            padding: 20px;
+            margin: 50px;
+        }
 
-        <div id="div2">
+        #messageForm {
+            display: inline-block;
+            text-align: left;
+        }
 
-            <h2 style="color: #43a5cf;">About Me</h2>
-            <p>Hello, I am Anakin Skywalker. I am a jedi knight.</p>
+        #messageForm label {
+            display: block;
+            margin-top: 10px;
+        }
 
+        #messageForm input,
+        #messageForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
 
-        </div>
-        <div id="div2">
+        #messageForm button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <script src="jquery-3.7.1.min.js"></script>
 
-            <h2 style="color: #43a5cf;">Purporses</h2>
-            <p>My goal is to bring balance to the force.</p>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
 
-        </div>
+<body background="bodyback.jpg">
 
-        <div id="div2">
+    <div id="div1">
+        <h1 style="color:#43a5cf; padding-top:20px;">Anakin Skywalker</h1>
+        <img src="HaydenChristensen.jpg" alt="Anakin" id="img1" width="200px" height="200px" style=" padding-top: 0px;">
+        <br><br>
+        <a id="as" href="Web.html">About Me</a>
+        <a id="as" href="Web.html">Purporses</a>
+        <a id="as" href="Web.html">Communication</a>
+        <br><br>
+        <button id="showFormButton">Mesaj Gönder</button>
+    </div>
 
-            <h2 style="color: #43a5cf;">Communication</h2>
-            <p>You can find me on the Jedi Council.</p>
+    <div id="div2">
+        <h2 style="color: #43a5cf;">About Me</h2>
+        <p id="icerik">Hello, I am Anakin Skywalker. I am a jedi knight.</p>
+    </div>
 
-        </div>
+    <script>
+        $(function () {
+            $("#div2").click(function () {
+                $("#icerik").slideToggle("slow");
+            });
+        });
+    </script>
 
-        <h1 style="color: white; text-align: center; font-family:'Brush Script MT', 'Brush Script Std', 'cursive';">may the force be with you</h1>
-        
-    </body>
+    <div id="div3">
+        <h2 style="color: #43a5cf;">Purporses</h2>
+        <p id="icerik2">My goal is to bring balance to the force.</p>
+    </div>
+
+    <script>
+        $(function () {
+            $("#div3").click(function () {
+                $("#icerik2").slideToggle("slow");
+            });
+        });
+    </script>
+
+    <div id="div4">
+        <h2 style="color: #43a5cf;">Communication</h2>
+        <p id="icerik3">You can find me on the Jedi Council.</p>
+    </div>
+
+    <script>
+        $(function () {
+            $("#div4").click(function () {
+                $("#icerik3").slideToggle("slow");
+            });
+        });
+    </script>
+
+    <div id="messageFormContainer">
+        <form id="messageForm">
+            <h2>Mesaj Gönder</h2>
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="message">Mesaj:</label>
+            <textarea id="message" name="message" required></textarea>
+            <br>
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
+
+    <h1 style="color: white; text-align: center; font-family:'Brush Script MT', 'Brush Script Std', 'cursive';">may the force be with you</h1>
+
+    <script>
+        $(document).ready(function () {
+            $('#showFormButton').click(function () {
+                $('#messageFormContainer').slideToggle();
+            });
+        });
+    </script>
+
+</body>
 
 </html>
